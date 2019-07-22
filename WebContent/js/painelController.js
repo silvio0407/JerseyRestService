@@ -3,6 +3,7 @@ var app = angular.module('app', [ 'ui.mask' ]);
 app.controller('painelInicialController', function($scope, $http) {
  $scope.showCadastro = false;
  $scope.noticia = montarObjNoticia();
+ $scope.allNoticias = {};
  
  $scope.abreCadastroNoticia = function() {
         $scope.showCadastro = true;
@@ -26,6 +27,18 @@ app.controller('painelInicialController', function($scope, $http) {
                      alert("Falha ao cadastrar notícia!");
                });
  };
+ 
+ $scope.listarNoticias = function(){
+	 $http.get('/devmedia_news_rest_web/rest/noticia/listar')
+	       .success(function(data){
+	              $scope.allNoticias = data;
+	       })
+	       .error(function(){
+	              alert("Falha em obter as notícias");
+	       });
+	};
+	 
+	$scope.listarNoticias();
 });
  
 function montarObjNoticia() {

@@ -57,8 +57,15 @@ public class NoticiaService {
 	@Path("/listar")
 	public List<Noticia> listarNoticias() {
 		List<Noticia> noticias = new ArrayList<Noticia>();
+		
+		Noticia noticia = new Noticia();
+		noticia.setId(1);
+		noticia.setDescricao("Teste");
+		noticia.setTitulo("Teste");
+		noticia.setTexto("Teste");
+		noticia.setData("22/07/2019");
 
-		Connection con = DatabaseConfig.getConnection();
+/*		Connection con = DatabaseConfig.getConnection();
 
 		try {
 			PreparedStatement stm = con.prepareStatement("SELECT * FROM TB_NOTICIA");
@@ -76,7 +83,9 @@ public class NoticiaService {
 			con.close();
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}
+		}*/
+		 noticias.add(noticia);
+		
 		return noticias;
 	}
 }
