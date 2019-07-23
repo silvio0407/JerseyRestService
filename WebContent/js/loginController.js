@@ -13,7 +13,6 @@ app.controller('loginController', function($scope, $http) {
  
           $http.post('/devmedia_news_rest_web/rest/login', 
           $scope.login).success(function(data) {
- 
                  if (data.logado) {
                        window.location = "painel-inicial.html"
                  } else {

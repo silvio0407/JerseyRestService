@@ -29,11 +29,11 @@ public class NoticiaService {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Path("/new")
 	public void logarUsuario(Noticia noticia) {
-		Connection con = DatabaseConfig.getConnection();
-
 		DateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 
 		try {
+			Connection con = DatabaseConfig.getInstance().getConnection();
+			
 			PreparedStatement stm = con.prepareStatement(
 					"INSERT INTO TB_NOTICIA(TITULO," + "DESCRICAO, TEXTO, DATA, STATUS) VALUES(?, ?, ?, ?, ?)");
 			stm.setString(1, noticia.getTitulo());
